@@ -48,6 +48,8 @@ camera.position.set(0, 0, 750);
 // Create a scene
 const scene = new THREE.Scene();
 
+//set the scene background
+scene.background = new THREE.Color("#000");
 
 // Attach the renderer to the DOM element.
 container.appendChild(renderer.domElement);
