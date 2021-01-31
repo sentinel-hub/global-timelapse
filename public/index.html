@@ -34,20 +34,20 @@
 
 <!-- sidebar stuff -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<div id="mySidebar" class="sidebar">
+<div id="sidebar" class="sidebar">
   <button onclick=" showInfo()" class="basebutton" type="basebutton">
-    <i class="material-icons" style="font-size:35px;">info</i><span class="
+    <i class="material-icons">info</i><span class="
       icon-text"></span>&nbsp;&nbsp;&nbsp;about</span>
   </button>
   <button
     onclick="window.open('https://github.com/sentinel-hub/public-collections/tree/main/collections/sentinel-s2-l2a-mosaic-120','_blank')"
     class="basebutton" type="basebutton">
-    <i class="material-icons" style="font-size:35px;">leaderboard</i><span class="
+    <i class="material-icons">leaderboard</i><span class="
         icon-text"></span>&nbsp;&nbsp;&nbsp;data</span>
   </button>
   <div class="dropdown">
     <button class="basebutton" type="basebutton">
-      <i class="material-icons" style="font-size:35px;">public</i><span class="icon-text">&nbsp;&nbsp;&nbsp;globe</span>
+      <i class="material-icons">public</i><span class="icon-text">&nbsp;&nbsp;&nbsp;globe</span>
     </button>
     <div class="dropdown-content">
       <button onclick="switchTexture('globe.mp4')" class="menubutton" type="menubutton">Blue Marble</button>
@@ -57,6 +57,15 @@
       <button onclick="switchTexture('globe_ndvi.mp4')" class="menubutton" type="menubutton">NDVI</button>
     </div>
   </div>
+</div>
+
+<!-- code button -->
+<div id="codeplace">
+  <button onclick="window.open('https://github.com/mlubej/global-timelapse','_blank')" class="codebutton"
+    type="codebutton">
+    <i class="material-icons">code</i>
+  </button>
+  </button>
 </div>
 
 <script>
