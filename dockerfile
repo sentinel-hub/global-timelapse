@@ -2,8 +2,8 @@
 
 FROM node:current-buster
 
-RUN git clone https://github.com/mlubej/globe-temp
+RUN git clone https://github.com/mlubej/global-timelapse
 
-WORKDIR globe-temp
+WORKDIR global-timelapse
 
 RUN npm install
