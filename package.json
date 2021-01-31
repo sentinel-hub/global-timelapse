@@ -1,0 +1,39 @@
+{
+  "name": "boilerplate",
+  "version": "0.0.1",
+  "description": "A review time project",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha **/*.test.js *.test.js",
+    "build": "webpack",
+    "build-watch": "webpack -w",
+    "start": "webpack -w & nodemon server/start.js"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "skeleton"
+  ],
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "react": "^15.7.0",
+    "react-dom": "^15.7.0",
+    "react-router-dom": "^4.3.1",
+    "webpack": "^3.12.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "gh-pages": "^3.1.0",
+    "glm": "^1.0.0",
+    "glm-js": "0.0.6-c",
+    "three": "^0.124.0",
+    "volleyball": "^1.5.1",
+    "webpack": "^3.12.0"
+  }
+}

@@ -1,0 +1,310 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #000;
+}
+
+@media only screen
+  and (min-aspect-ratio : 1/1) {
+
+  #infobar {
+    visibility: hidden;
+    width: 550px;
+    margin-left: 0px;
+    background-color: #222;
+    color: #ddd;
+    text-align: left;
+    border-radius: 20px;
+    padding: 25px;
+    position: fixed;
+    right: 30px;
+    top: 100px;
+    font-size: 20px;
+  }
+
+  #infobar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s;
+    animation: fadein 0.5s;
+  }
+
+  #infobar.hide {
+    visibility: hidden;
+    -webkit-animation: fadeout 0.5s;
+    animation: fadeout 0.5s;
+    transition-property: visibility;
+    transition-delay: 0.5s;
+  }
+
+  @-webkit-keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  @keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  @-webkit-keyframes fadeout {
+    from {opacity: 1;}
+    to {opacity: 0;}
+  }
+
+  @keyframes fadeout {
+    from {opacity: 1;}
+    to {opacity: 0;}
+  }
+
+  ul, ol {
+  margin-left:25px;
+  padding: 10px;
+  }
+
+  a:link {
+    color: #00cbf4;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: #00cbf4;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+
+  .sidebar {
+    height: 65px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    /* overflow-x: hidden; */
+    transition: 0.5s;
+    padding-left: 0%;
+    /* white-space: nowrap; */
+  }
+
+  .basebutton {
+    background-color: #111;
+    color: #aaa;
+    border: none;
+    display: inline-block;
+    width: 225px;
+    height: 65px;
+    margin: 0 auto;
+    text-decoration: none;
+    font-size: 30px;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  .menubutton {
+    background-color: #aaa;
+    color: #111;
+    border: none;
+    display: inline-block;
+    width: 225px;
+    height: 65px;
+    margin: 0 auto;
+    text-decoration: none;
+    font-size: 20px;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  .basebutton:hover {background-color: #aaa; color: #111}
+
+  .menubutton:hover {background-color: #ccc;}
+
+  .basebutton,
+  .material-icons,
+  .icon-text {
+    vertical-align: middle;
+    font-size: 30px;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: block;
+    position: absolute;
+    background-color: #aaa;
+    width: 225px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s linear;
+  }
+
+  .dropdown:hover .dropdown-content {
+    background-color: #aaa;
+    color: #111;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .dropdown:hover .basebutton {background-color: #aaa; color: #111}
+}
+
+@media only screen
+  and (max-aspect-ratio : 1/1) {
+
+  #infobar {
+    visibility: hidden;
+    width: 70%;
+    margin-left: 10%;
+    background-color: #222;
+    color: #ddd;
+    text-align: left;
+    border-radius: 20px;
+    padding: 5%;
+    position: fixed;
+    bottom: 30px;
+    font-size: 30px;
+    display: block;
+  }
+
+  #infobar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s;
+    animation: fadein 0.5s;
+  }
+
+  #infobar.hide {
+    visibility: hidden;
+    -webkit-animation: fadeout 0.5s;
+    animation: fadeout 0.5s;
+    transition-property: visibility;
+    transition-delay: 0.5s;
+  }
+
+  @-webkit-keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  @keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  @-webkit-keyframes fadeout {
+    from {opacity: 1;}
+    to {opacity: 0;}
+  }
+
+  @keyframes fadeout {
+    from {opacity: 1;}
+    to {opacity: 0;}
+  }
+
+  ul, ol {
+  margin-left:25px;
+  padding: 10px;
+  }
+
+  a:link {
+    color: #00cbf4;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: #00cbf4;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: white;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+
+  .sidebar {
+    height: 125px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    transition: 0.5s;
+    padding-left: 0%;
+  }
+
+  .basebutton {
+    background-color: #111;
+    color: #aaa;
+    border: none;
+    display: inline-block;
+    width: 275px;
+    height: 125px;
+    margin: 0 auto;
+    text-decoration: none;
+    font-size: 40px;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  .menubutton {
+    background-color: #aaa;
+    color: #111;
+    border: none;
+    display: inline-block;
+    width: 275px;
+    height: 125px;
+    margin: 0 auto;
+    text-decoration: none;
+    font-size: 30px;
+    outline: none;
+    transition: 0.3s;
+  }
+
+  .basebutton:hover {background-color: #aaa; color: #111}
+
+  .menubutton:hover {background-color: #ccc;}
+
+  .basebutton,
+  .material-icons,
+  .icon-text {
+    vertical-align: middle;
+    font-size: 50px;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: block;
+    position: absolute;
+    background-color: #aaa;
+    width: 225px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s linear;
+  }
+
+  .dropdown:hover .dropdown-content {
+    background-color: #aaa;
+    color: #111;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .dropdown:hover .basebutton {background-color: #aaa; color: #111}
+}

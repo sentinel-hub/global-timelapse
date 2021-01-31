@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<title>Digital Twin Sandbox</title>
+
+<!-- load css -->
+
+<head>
+  <link rel=" stylesheet" type="text/css" href="./style.css">
+</head>
+
+<!-- set videos -->
+<video id="video" muted loop autoplay playsinline src="globe.mp4" style="display: none;"></video>
+<video id="true_color_flipped" muted loop autoplay playsinline src="./globe_flipped.mp4" style="display: none;"></video>
+
+
+<!-- infobar stuff -->
+<div id="infobar">
+  <span style="background-color: #222;">
+    <h3 id="digital-twin-sandbox">Digital Twin Sandbox</h3>
+    <p><br>The animated model of the Earth&#39;s land surface: </p>
+    <ul>
+      <li> based on Sentinel-2 L2A data from 2019,</li>
+      <li> between 58 degrees South and 72 degrees North, </li>
+      <li> processed at 120 meter resolution.</li>
+    </ul>
+    <p><br>The <a
+        href="https://visibleearth.nasa.gov/images/73909/december-blue-marble-next-generation-w-topography-and-bathymetry"
+        target="_blank" rel="noopener noreferrer">Blue Marble</a> image was used as a static background</p>
+    <p>for excluded areas and for areas with no Sentinel-2 data.</p>
+    <p><br>Check this <a href="https://medium.com/@grega.milcinski/20f3b5de846e" target="_blank"
+        rel="noopener noreferrer">announcement</a> for more info.</p>
+  </span>
+</div>
+
+<!-- sidebar stuff -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<div id="mySidebar" class="sidebar">
+  <button onclick=" showInfo()" class="basebutton" type="basebutton">
+    <i class="material-icons" style="font-size:35px;">info</i><span class="
+      icon-text"></span>&nbsp;&nbsp;&nbsp;about</span>
+  </button>
+  <button
+    onclick="window.open('https://github.com/sentinel-hub/public-collections/tree/main/collections/sentinel-s2-l2a-mosaic-120','_blank')"
+    class="basebutton" type="basebutton">
+    <i class="material-icons" style="font-size:35px;">leaderboard</i><span class="
+        icon-text"></span>&nbsp;&nbsp;&nbsp;data</span>
+  </button>
+  <div class="dropdown">
+    <button class="basebutton" type="basebutton">
+      <i class="material-icons" style="font-size:35px;">public</i><span class="icon-text">&nbsp;&nbsp;&nbsp;globe</span>
+    </button>
+    <div class="dropdown-content">
+      <button onclick="switchTexture('globe.mp4')" class="menubutton" type="menubutton">Blue Marble</button>
+      <button onclick="switchTexture('globe_true_color.mp4')" class="menubutton" type="menubutton">True Color</button>
+      <button onclick="switchTexture('globe_false_color.mp4')" class="menubutton" type="menubutton">False
+        Color</button>
+      <button onclick="switchTexture('globe_ndvi.mp4')" class="menubutton" type="menubutton">NDVI</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  var mini = true;
+  function showInfo()
+  {
+    var x = document.getElementById("infobar");
+    if (x.className === "" || x.className === "hide")
+    {
+      x.className = "show";
+      setTimeout(function () { x.className = x.className.replace("show", "hide"); }, 10000);
+    } else
+    {
+      x.className = "hide";
+    }
+  }
+  function switchTexture(video_path)
+  {
+    var video = document.getElementById("video");
+    video.src = video_path;
+  }
+
+  function reload() { window.open(window.location.href, '_top') }
+</script>
+
+<body onresize="reload()">
+  <div id="main"></div>
+  <div id="container" width="100vw" height="100vh" />
+  <script async defer src="/bundle.js"></script>
+</body>
+
+</html>
