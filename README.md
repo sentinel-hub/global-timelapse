@@ -4,6 +4,12 @@ This app displays an interactive simulation of our planet showing multiple layer
 
 ![img](figs/image.png)
 
+## Data
+
+The app uses data extracted from the following collection: https://github.com/sentinel-hub/public-collections/tree/main/collections/sentinel-s2-l2a-mosaic-120
+
+Check out the announcement: https://medium.com/sentinel-hub/digital-twin-sandbox-sentinel-2-collection-available-to-everyone-20f3b5de846e
+
 ## Instructions
 
 1. Fork and clone this repo
