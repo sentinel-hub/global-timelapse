@@ -9,9 +9,7 @@
 </head>
 
 <!-- set videos -->
-<video id="video" muted loop autoplay playsinline src="globe.mp4" style="display: none;"></video>
-<video id="true_color_flipped" muted loop autoplay playsinline src="./globe_flipped.mp4" style="display: none;"></video>
-
+<video id="video" muted loop autoplay playsinline src="globe_lr.mp4" style="display: none;"></video>
 
 <!-- infobar stuff -->
 <div id="infobar">
@@ -51,11 +49,12 @@
       <i class="material-icons">public</i><span class="icon-text">&nbsp;&nbsp;&nbsp;layers</span>
     </button>
     <div class="dropdown-content">
-      <button onclick="switchTexture('globe.mp4')" class="menubutton" type="menubutton">True Color + Blue
+      <button onclick="switchTexture('globe_lr.mp4')" class="menubutton" type="menubutton">True Color + Blue
         Marble</button>
-      <button onclick="switchTexture('globe_true_color.mp4')" class="menubutton" type="menubutton">True Color</button>
-      <button onclick="switchTexture('globe_ndvi.mp4')" class="menubutton" type="menubutton">NDVI</button>
-      <button onclick="switchTexture('globe_false_color.mp4')" class="menubutton" type="menubutton">False
+      <button onclick="switchTexture('globe_true_color_lr.mp4')" class="menubutton" type="menubutton">True
+        Color</button>
+      <button onclick="switchTexture('globe_ndvi_lr.mp4')" class="menubutton" type="menubutton">NDVI</button>
+      <button onclick="switchTexture('globe_false_color_lr.mp4')" class="menubutton" type="menubutton">False
         Color</button>
     </div>
   </div>
@@ -71,23 +70,19 @@
 </div>
 
 <script>
-  var mini = true;
-  function showInfo()
-  {
+  function showInfo() {
     var x = document.getElementById("infobar");
-    if (x.className === "" || x.className === "hide")
-    {
+    if (x.className === "" || x.className === "hide") {
       x.className = "show";
       setTimeout(function () { x.className = x.className.replace("show", "hide"); }, 10000);
-    } else
-    {
+    } else {
       x.className = "hide";
     }
   }
-  function switchTexture(video_path)
-  {
+  function switchTexture(video_path) {
     var video = document.getElementById("video");
     video.src = video_path;
+    video.play();
   }
 
   function reload() { window.open(window.location.href, '_top') }
