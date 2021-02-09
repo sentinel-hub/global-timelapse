@@ -284,15 +284,16 @@ a:hover {
 
   #infobar {
     visibility: hidden;
-    width: 70%;
-    margin-left: 10%;
+    width: 85vw;
+    /* margin-left: 7.5vw; */
     background-color: #222;
     color: #ddd;
     text-align: left;
     border-radius: 20px;
-    padding: 5%;
+    padding: 5vw;
+    left: 2.5vw;
     position: fixed;
-    bottom: 150px;
+    top: 150px;
     font-size: 30px;
     display: block;
   }
