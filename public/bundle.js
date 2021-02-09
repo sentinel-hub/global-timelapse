@@ -74486,101 +74486,77 @@ function Root() {
     return null;
 }
 
-//Setup:
-//get the DOM element in which you want to attach the scene
+// SETUP
+
+// Parameters canvas
+var WIDTH = window.innerWidth;
+var HEIGHT = window.innerHeight;
+
+// Parameters sphere
+var DISTANCE = 750;
+var RADIUS = 200 * Math.min(WIDTH, HEIGHT) / Math.max(WIDTH, HEIGHT);
+var SEGMENTS = 50;
+var RINGS = 50;
+
+// Parameters camera
+var ASPECT = WIDTH / HEIGHT;
+var VIEW_ANGLE = Math.min(WIDTH, HEIGHT) / Math.max(WIDTH, HEIGHT) * 180 / Math.PI;
+var NEAR = 0.1 * DISTANCE;
+var FAR = 10 * DISTANCE;
+
+// get the DOM element in which you want to attach the scene
 var container = document.querySelector('#container');
 
 //create a WebGL renderer
 var renderer = new THREE.WebGLRenderer();
-
-//set the attributes of the renderer
-var WIDTH = window.innerWidth;
-var HEIGHT = window.innerHeight;
-
-//set the renderer size
 renderer.setSize(WIDTH, HEIGHT);
-
-//Adding a Camera
-
-//set camera attributes
-var VIEW_ANGLE = 45;
-var ASPECT = WIDTH / HEIGHT;
-var NEAR = 0.1;
-var FAR = 1500;
 
 //create a camera
 var camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
+camera.position.set(0, 0, DISTANCE);
 
+// orbit controls
 var controls = new _OrbitControls.OrbitControls(camera, renderer.domElement);
-
-//set the camera position - x, y, z
-camera.position.set(0, 0, 750);
 
 // Create a scene
 var scene = new THREE.Scene();
-
-//set the scene background
 scene.background = new THREE.Color("#000");
 
 // Attach the renderer to the DOM element.
 container.appendChild(renderer.domElement);
 
-//Three.js uses geometric meshes to create primitive 3D shapes like spheres, cubes, etc. I’ll be using a sphere.
-
-// Set up the sphere attributes
-var RADIUS = WIDTH / 10;
-var SEGMENTS = 50;
-var RINGS = 50;
-
-//Create a group (which will later include our sphere and its texture meshed together)
 var globe = new THREE.Group();
-//add it to the scene
 scene.add(globe);
-
-//Let's create our globe using TextureLoader
 
 // instantiate a loader
 var video = document.getElementById('video');
+video.load();
 video.play();
+
 var texture = new THREE.VideoTexture(video);
-//create the sphere
 var sphere = new THREE.SphereGeometry(RADIUS, SEGMENTS, RINGS);
-
-//map the texture to the material. Read more about materials in three.js docs
 var material = new THREE.MeshBasicMaterial({ map: texture });
-
-//create a new mesh with sphere geometry.
-//create a new mesh with sphere geometry.
-//create a new mesh with sphere geometry.
 var mesh = new THREE.Mesh(sphere, material);
-
-//add mesh to globe group
 globe.add(mesh);
 
-// Move the sphere back (z) so we can see it.
-// globe.position.z = -300;
-
 //Lighting
-
 //create a point light (won't make a difference here because our material isn't affected by light)
 var pointLight = new THREE.PointLight(0xFFFFFF);
-
-//set its position
 pointLight.position.x = 10;
 pointLight.position.y = 50;
 pointLight.position.z = 400;
-
-//add light to the scene
 scene.add(pointLight);
 
 //Update
 //set update function to transform the scene and view
+var slider = document.getElementById("rotation");
 function update() {
     //render
     renderer.render(scene, camera);
 
     //schedule the next frame.
     requestAnimationFrame(update);
+    controls.autoRotateSpeed = slider.value;
     controls.update();
 }
 
@@ -74624,7 +74600,7 @@ var OrbitControls = function OrbitControls(object, domElement) {
 	this.target = new _threeModule.Vector3();
 
 	// How far you can dolly in and out ( PerspectiveCamera only )
-	this.minDistance = 400;
+	this.minDistance = 300;
 	this.maxDistance = 1500;
 
 	// How far you can zoom in and out ( OrthographicCamera only )
@@ -74664,7 +74640,7 @@ var OrbitControls = function OrbitControls(object, domElement) {
 	// Set to true to automatically rotate around the target
 	// If auto-rotate is enabled, you must call controls.update() in your animation loop
 	this.autoRotate = true;
-	this.autoRotateSpeed = 2.0; // 30 seconds per round when fps is 60
+	this.autoRotateSpeed = 2.5; // 30 seconds per round when fps is 60
 
 	// Set to false to disable use of the keys
 	this.enableKeys = false;

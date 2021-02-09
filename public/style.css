@@ -8,7 +8,6 @@ body {
   font-family: "Lato", sans-serif;
 }
 
-
 @-webkit-keyframes fadein {
   from {opacity: 0;}
   to {opacity: 1;}
@@ -34,6 +33,7 @@ margin-left:25px;
 padding: 10px;
 }
 
+
 a:link {
   color: #00cbf4;
   background-color: transparent;
@@ -52,6 +52,7 @@ a:hover {
   text-decoration: underline;
 }
 
+
 @media only screen
   and (min-aspect-ratio : 1/1) {
 
@@ -59,6 +60,9 @@ a:hover {
     font-size: 35px;
   }
   .codebutton .material-icons {
+    font-size: 35px;
+  }
+  .slidebutton .material-icons {
     font-size: 35px;
   }
 
@@ -91,6 +95,13 @@ a:hover {
     transition-delay: 0.5s;
   }
 
+  #logo {
+    height: 75px;
+    position: fixed;
+    left: 0px;
+    bottom: 15px;
+  }
+
   .sidebar {
     height: 65px;
     width: 100%;
@@ -98,10 +109,8 @@ a:hover {
     top: 0;
     left: 0;
     background-color: #111;
-    /* overflow-x: hidden; */
     transition: 0.5s;
     padding-left: 0%;
-    /* white-space: nowrap; */
   }
 
   .basebutton {
@@ -109,7 +118,7 @@ a:hover {
     color: #aaa;
     border: none;
     display: inline-block;
-    width: 225px;
+    width: 175px;
     height: 65px;
     margin: 0 auto;
     text-decoration: none;
@@ -123,7 +132,7 @@ a:hover {
     color: #111;
     border: none;
     display: inline-block;
-    width: 225px;
+    width: 175px;
     height: 65px;
     margin: 0 auto;
     text-decoration: none;
@@ -156,6 +165,7 @@ a:hover {
     bottom: 5px;
     right: 5px;
   }
+
   .codebutton:link {background-color: #222; color: #aaa}
   .codebutton:visited {background-color: #222; color: #aaa}
   .codebutton:hover {background-color: #aaa; color: #222}
@@ -180,7 +190,7 @@ a:hover {
     display: block;
     position: absolute;
     background-color: #aaa;
-    width: 225px;
+    width: 175px;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.3s linear;
@@ -194,6 +204,68 @@ a:hover {
   }
 
   .dropdown:hover .basebutton {background-color: #aaa; color: #111}
+
+  #controls {
+    visibility: hidden;
+    width: 30vw;
+    height: 70px;
+    position:absolute;
+    bottom: 30px;
+    left: 35.5vw;
+  }
+
+  .slidebutton {
+    background-color:transparent;
+    color: #aaa;
+    width: 2vw;
+    border-radius: 100%;
+    border: none;
+    display: inline-block;
+  }
+
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 25vw; /* Full-width */
+    height: 8px;
+    border-radius: 5px;
+    background: #333; /* Grey background */
+    outline: none; /* Remove outline */
+  }
+
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 20px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    border-radius: 100%;
+    background: #aaa; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+  .slider::-moz-range-thumb {
+    width: 20px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    border-radius: 100%;
+    background: #aaa; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+  #controls.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s;
+    animation: fadein 0.5s;
+  }
+
+  #controls.hide {
+    visibility: hidden;
+    -webkit-animation: fadeout 0.5s;
+    animation: fadeout 0.5s;
+    transition-property: visibility;
+    transition-delay: 0.5s;
+  }
+
 }
 
 @media only screen
@@ -206,6 +278,10 @@ a:hover {
     font-size: 55px;
   }
 
+  .slidebutton .material-icons {
+    font-size: 90px;
+  }
+
   #infobar {
     visibility: hidden;
     width: 70%;
@@ -216,7 +292,7 @@ a:hover {
     border-radius: 20px;
     padding: 5%;
     position: fixed;
-    bottom: 30px;
+    bottom: 150px;
     font-size: 30px;
     display: block;
   }
@@ -235,9 +311,16 @@ a:hover {
     transition-delay: 0.5s;
   }
 
+  #logo {
+    height: 100px;
+    position: fixed;
+    left: 5px;
+    bottom: 40px;
+  }
+
   .sidebar {
-    height: 125px;
-    width: 100%;
+    height: 100px;
+    width: 100vw;
     position: fixed;
     top: 0;
     left: 0;
@@ -250,12 +333,11 @@ a:hover {
     background-color: #111;
     color: #aaa;
     border: none;
-    display: inline-block;
-    width: 250px;
-    height: 125px;
+    display: inline;
+    width: 24.5vw;
+    height: 100px;
     margin: 0 auto;
     text-decoration: none;
-    font-size: 40px;
     outline: none;
     transition: 0.3s;
   }
@@ -265,8 +347,8 @@ a:hover {
     color: #111;
     border: none;
     display: inline-block;
-    width: 250px;
-    height: 125px;
+    width: 24.5vw;
+    height: 100px;
     margin: 0 auto;
     text-decoration: none;
     font-size: 30px;
@@ -310,7 +392,7 @@ a:hover {
   .material-icons,
   .icon-text {
     vertical-align: middle;
-    font-size: 50px;
+    font-size: 40px;
   }
 
   .dropdown {
@@ -322,7 +404,7 @@ a:hover {
     display: block;
     position: absolute;
     background-color: #aaa;
-    width: 225px;
+    width: 24.5vw;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.3s linear;
@@ -336,5 +418,67 @@ a:hover {
   }
 
   .dropdown:hover .basebutton {background-color: #aaa; color: #111}
+
+  #controls {
+    visibility: hidden;
+    width: 95vw;
+    height: 150px;
+    position:absolute;
+    bottom: 200px;
+    left: 2.5vw;
+  }
+
+  .slidebutton {
+    background-color:transparent;
+    color: #aaa;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 100%;
+    border: none;
+    display: inline-block;
+  }
+
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 80vw; /* Full-width */
+    height: 15px;
+    border-radius: 5px;
+    background: #333; /* Grey background */
+    outline: none; /* Remove outline */
+  }
+
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 50px; /* Set a specific slider handle width */
+    height: 50px; /* Slider handle height */
+    border-radius: 100%;
+    background: #aaa; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+  .slider::-moz-range-thumb {
+    width: 50px; /* Set a specific slider handle width */
+    height: 50px; /* Slider handle height */
+    border-radius: 100%;
+    background: #aaa; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+  #controls.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s;
+    animation: fadein 0.5s;
+  }
+
+  #controls.hide {
+    visibility: hidden;
+    -webkit-animation: fadeout 0.5s;
+    animation: fadeout 0.5s;
+    transition-property: visibility;
+    transition-delay: 0.5s;
+  }
 
 }

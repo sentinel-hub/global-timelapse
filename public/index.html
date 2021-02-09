@@ -9,7 +9,20 @@
 </head>
 
 <!-- set videos -->
-<video id="video" muted loop autoplay playsinline src="globe_lr.mp4" style="display: none;"></video>
+<video id="video" muted loop autoplay playbackRate=1.0 playsinline src="./globe_tc_lr.mp4"
+  style="display: none;"></video>
+
+<!-- logo -->
+<a href="https://www.sentinel-hub.com/" target="_blank"><img id="logo"
+    src="https://www.sentinel-hub.com/img/logo.svg"></a>
+
+<!-- sliders -->
+<div id="controls">
+  <button class="slidebutton" type="slidebutton"><i class="material-icons">play_arrow</i></button>
+  <input type="range" min="0.069" max="2.0" step="0.01" value="1.0" class="slider" id="timelapse"></input><br>
+  <button class="slidebutton" type="slidebutton"><i class="material-icons">cached</i></button>
+  <input type="range" min="0.0" max="4.0" step="0.02" value="1.0" class="slider" id="rotation"></input>
+</div>
 
 <!-- infobar stuff -->
 <div id="infobar">
@@ -34,30 +47,32 @@
 <!-- sidebar stuff -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <div id="sidebar" class="sidebar">
-  <button onclick=" showInfo()" class="basebutton" type="basebutton">
+  <button onclick="showInfo('infobar', timeout=true)" class="basebutton" type="basebutton">
     <i class="material-icons">info</i><span class="
-      icon-text"></span>&nbsp;&nbsp;&nbsp;about</span>
+      icon-text"></span>&nbsp;about</span>
   </button>
   <button
     onclick="window.open('https://github.com/sentinel-hub/public-collections/tree/main/collections/sentinel-s2-l2a-mosaic-120','_blank')"
     class="basebutton" type="basebutton">
     <i class="material-icons">leaderboard</i><span class="
-        icon-text"></span>&nbsp;&nbsp;&nbsp;data</span>
+        icon-text"></span>&nbsp;data</span>
   </button>
   <div class="dropdown">
     <button class="basebutton" type="basebutton">
-      <i class="material-icons">public</i><span class="icon-text">&nbsp;&nbsp;&nbsp;layers</span>
+      <i class="material-icons">public</i><span class="icon-text">&nbsp;layers</span>
     </button>
     <div class="dropdown-content">
-      <button onclick="switchTexture('globe_lr.mp4')" class="menubutton" type="menubutton">True Color + Blue
-        Marble</button>
-      <button onclick="switchTexture('globe_true_color_lr.mp4')" class="menubutton" type="menubutton">True
-        Color</button>
-      <button onclick="switchTexture('globe_ndvi_lr.mp4')" class="menubutton" type="menubutton">NDVI</button>
-      <button onclick="switchTexture('globe_false_color_lr.mp4')" class="menubutton" type="menubutton">False
-        Color</button>
+      <button onclick="switchTexture('./globe_tc_lr.mp4')" class="menubutton" type="menubutton">True Color</button>
+      <button onclick="switchTexture('./globe_ndvi_1_lr.mp4')" class="menubutton" type="menubutton">NDVI</button>
+      <button onclick="switchTexture('./globe_ndvi_2_lr.mp4')" class="menubutton" type="menubutton">NDVI
+        alternative</button>
+      <button onclick="switchTexture('./globe_fc_lr.mp4')" class="menubutton" type="menubutton">False Color</button>
     </div>
   </div>
+  <button onclick="showInfo('controls', timeout=false)" class="basebutton" type="basebutton">
+    <i class="material-icons">play_circle_outline</i><span class="
+      icon-text"></span>&nbsp;controls</span>
+  </button>
 </div>
 
 <!-- code button -->
@@ -70,28 +85,40 @@
 </div>
 
 <script>
-  function showInfo() {
-    var x = document.getElementById("infobar");
+  function showInfo(id, timeout = false) {
+    var x = document.getElementById(id);
     if (x.className === "" || x.className === "hide") {
       x.className = "show";
-      setTimeout(function () { x.className = x.className.replace("show", "hide"); }, 10000);
+      if (timeout) {
+        setTimeout(function () { x.className = x.className.replace("show", "hide"); }, 10000);
+      }
     } else {
       x.className = "hide";
     }
   }
+
+  var video = document.getElementById("video");
+  var slider = document.getElementById("timelapse");
+
   function switchTexture(video_path) {
-    var video = document.getElementById("video");
     video.src = video_path;
+    video.load();
     video.play();
+    slider.value = 1.25;
   }
 
-  function reload() { window.open(window.location.href, '_top') }
+  slider.oninput = function () {
+    video.playbackRate = this.value;
+    if (this.value < 0.07) { video.playbackRate = 0.0; }
+  }
+
+  function reload() { console.log("Reloading window"); window.open(window.location.href, '_top') }
 </script>
 
 <body onresize="reload()">
   <div id="main"></div>
   <div id="container" width="100vw" height="100vh" />
-  <script async defer src="/bundle.js"></script>
+  <script async defer src="./bundle.js"></script>
 </body>
 
 </html>
