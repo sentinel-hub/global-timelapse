@@ -568,6 +568,31 @@ a:hover {
     transition-delay: 0.5s;
   }
 
+  #copyright {
+    visibility: hidden;
+    width: 100%;
+    margin-left: 0px;
+    color: #ddd;
+    text-align: center;
+    position: fixed;
+    bottom: 20px;
+    font-size: 15;
+  }
+
+  #copyright.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s;
+    animation: fadein 0.5s;
+  }
+
+  #copyright.hide {
+    visibility: hidden;
+    -webkit-animation: fadeout 0.5s;
+    animation: fadeout 0.5s;
+    transition-property: visibility;
+    transition-delay: 0.5s;
+  }
+
   #logo {
     height: 100px;
     position: fixed;
